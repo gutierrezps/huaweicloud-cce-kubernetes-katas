@@ -3,8 +3,11 @@ kind: PersistentVolumeClaim
 metadata:
   name: postgres-pvc
 spec:
-  # default. Use `kubectl get sc` too what storage classes are configured
-  storageClassName: "gp2"
+  # An Elastic Volume Service (EVS) disk will be dynamically provisioned.
+  # See https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_10_0307.html
+  # for an Storage overview in Huawei Cloud Container Engine (CCE).
+  # You can also use `kubectl get sc` to see what storage classes are configured
+  storageClassName: "csi-disk"
   accessModes:
     - ReadWriteOnce
   resources:
